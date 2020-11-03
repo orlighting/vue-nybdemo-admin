@@ -36,7 +36,7 @@
     </tr>
     <tr align="center">
        <td>参展商来源</td>
-       <td >国内{{detailForm.expofrom1}} 海外{{detailForm.expofrom2}}</td> 
+       <td >国内{{detailForm.hosttime}} 海外{{}}</td> 
        <td>观众构成</td>
        <td >参展商{{detailForm.hostcrlc}} 消费者{{}}</td>       
     </tr>

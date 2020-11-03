@@ -1,60 +1,30 @@
 <template>
-<div class="detailCkeck">
+<div class="easyCkeck">
   <table border="1px" cellspacing="0">
     <colgroup span="7" width="300"></colgroup>
     <!-- <colgroup span="1" width="200"></colgroup> -->
     <tr align="center">
-				<th colspan="7">展会详细申报审核</th>
+				<th colspan="7">展会简易申报审核</th>
 		</tr>
     <tr align="center">
       <td>展会名称</td>
-      <td colspan="6">{{detailForm.name}}</td>
+      <td>{{easyForm}}</td>
+      <td>展会对应ID</td>
+       <td>{{easyForm}}</td> 
     </tr>
     <tr  align="center">
        <td>主办单位</td>
-       <td>{{detailForm.fondcomp}}</td>
-       <td>承办单位</td>
-       <td>{{detailForm.time}}</td>  
-    </tr>
-    <tr align="center">
-       <td>批准单位</td>
-       <td >{{detailForm.authobj}}</td> 
-       <td>批准文号</td>
-       <td >{{detailForm.authnum}}</td>       
+       <td>{{easyForm}}</td>
+       <td>举办时间</td>
+       <td>{{easyForm}}</td>  
     </tr>
     <tr align="center">
        <td>举办地点</td>
-       <td >{{detailForm.hostpls}}</td> 
-       <td>举办面积</td>
-       <td >{{detailForm.hostarea}}</td>       
+       <td colspan="6">{{easyForm}}</td> 
     </tr>
     <tr align="center">
-       <td>举办时间</td>
-       <td >{{detailForm.hosttime}}</td> 
-       <td>举办周期</td>
-       <td >{{detailForm.hostcrlc}}</td>       
-    </tr>
-    <tr align="center">
-       <td>参展商来源</td>
-       <td >国内{{detailForm.expofrom1}} 海外{{detailForm.expofrom2}}</td> 
-       <td>观众构成</td>
-       <td >参展商{{detailForm.hostcrlc}} 消费者{{}}</td>       
-    </tr>
-    <tr align="center">
-       <td>展会内容</td>
-       <td colspan="6">{{detailForm.expocont}}</td> 
-    </tr>
-    <tr align="center">
-       <td>经费来源</td>
-       <td colspan="6">财政资金：{{detailForm.finanfond}}  其他资金{{detailForm.otherfrom}} </td> 
-    </tr>
-    <tr align="center">
-       <td>领导出席情况</td>
-       <td colspan="6">是否邀请党和国家领导人出席：{{detailForm.leaderN}}  是否邀请境外部级以上政要出席：{{detailForm.leaderF}}</td> 
-    </tr>
-    <tr align="center">
-       <td>参会活动内容简述</td>
-       <td colspan="6"></td> 
+       <td>备注</td>
+       <td colspan="6">{{easyForm}}</td> 
     </tr>
   </table>
   <br/>
@@ -67,65 +37,27 @@
 </template>
 
 <script>
-import { getdetailFormdata } from "../../network/detailCheck"
+import { getEasyFormdata } from "../../network/easyCheck"
 export default {
-  name: "detail",
+  name: "easy",
   data(){
     return{
-      detailForm: {}
+      easyForm: {}
 
     }
   },
   created(){
-    getdetailFormdata().then(res => {
-      this.detailForm = res
+    getEasyFormdata().then(res => {
+      this.easyForm = res
     })
 
   },
   method: {
     check(){
-      this.$axios
-        .post('/checkdetail', {
-          id: this.detailForm.id,
-          checkState: true
-
-        })
-        .then(successResponse => {
-          if (successResponse.data.code === 200) {
-
-          } else {
-            this.$message({
-              showClose: true,
-              message: "提交失败！",
-              type: "error"
-            })
-          }
-        })
-        .catch(failResponse => {})
-      history.go(-1)
-      
 
     },
     reject(){
-      this.$axios
-        .post('/checkdetail', {
-          id: this.detailForm.id,
-          checkState: false
-
-        })
-        .then(successResponse => {
-          if (successResponse.data.code === 200) {
-
-          } else {
-            this.$message({
-              showClose: true,
-              message: "提交失败！",
-              type: "error"
-            })
-          }
-        })
-        .catch(failResponse => {})
-
+      
     }
   }
 
@@ -173,7 +105,7 @@ export default {
 		font-family: 华文细黑;
 	}
 
-.detailCkeck{
+.easyCkeck{
   color: #666;
 }
 table {

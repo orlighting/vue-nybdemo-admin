@@ -8,29 +8,29 @@
 		</tr>
     <tr align="center">
       <td>展会名称</td>
-      <td>{{easyForm.name}}</td>
+      <td>{{easyForm}}</td>
       <td>展会对应ID</td>
-       <td>{{easyForm.id}}</td> 
+       <td>{{easyForm}}</td> 
     </tr>
     <tr  align="center">
        <td>主办单位</td>
-       <td>{{easyForm.host}}</td>
+       <td>{{easyForm}}</td>
        <td>举办时间</td>
-       <td>{{easyForm.time}}</td>  
+       <td>{{easyForm}}</td>  
     </tr>
     <tr align="center">
        <td>举办地点</td>
-       <td colspan="6">{{easyForm.place}}</td> 
+       <td colspan="6">{{easyForm}}</td> 
     </tr>
     <tr align="center">
        <td>备注</td>
-       <td colspan="6">{{easyForm.ps}}</td> 
+       <td colspan="6">{{easyForm}}</td> 
     </tr>
   </table>
   <br/>
 <div class="check">
-  <button class="pass" @click="check">审核通过</button>
-  <button class="reject" @click="reject">返回修改</button>
+  <button class="pass">审核通过</button>
+  <button class="reject">返回修改</button>
 </div>
 </div>
 
@@ -52,52 +52,6 @@ export default {
     })
 
   },
-  method: {
-    check(){
-      this.$axios
-        .post('/checkEasy', {
-          id: this.easyForm.id,
-          checkState: true
-
-        })
-        .then(successResponse => {
-          if (successResponse.data.code === 200) {
-
-          } else {
-            this.$message({
-              showClose: true,
-              message: "提交失败！",
-              type: "error"
-            })
-          }
-        })
-        .catch(failResponse => {})
-      history.go(-1)
-      
-
-    },
-    reject(){
-      this.$axios
-        .post('/checkEasy', {
-          id: this.easyForm.id,
-          checkState: false
-
-        })
-        .then(successResponse => {
-          if (successResponse.data.code === 200) {
-
-          } else {
-            this.$message({
-              showClose: true,
-              message: "提交失败！",
-              type: "error"
-            })
-          }
-        })
-        .catch(failResponse => {})
-
-    }
-  }
 
 }
 </script>
@@ -137,10 +91,6 @@ export default {
 		display: flex;
 		flex-direction: $direction;
 		justify-content: $content;
-	}
-  .kindsfont {
-		font-size: 20px;
-		font-family: 华文细黑;
 	}
 
 .easyCkeck{

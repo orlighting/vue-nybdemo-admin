@@ -36,7 +36,7 @@
     </tr>
     <tr align="center">
        <td>参展商来源</td>
-       <td >国内{{detailForm.expofrom1}} 海外{{detailForm.expofrom2}}</td> 
+       <td >国内{{detailForm.hosttime}} 海外{{}}</td> 
        <td>观众构成</td>
        <td >参展商{{detailForm.hostcrlc}} 消费者{{}}</td>       
     </tr>
@@ -50,7 +50,7 @@
     </tr>
     <tr align="center">
        <td>领导出席情况</td>
-       <td colspan="6">是否邀请党和国家领导人出席：{{detailForm.leaderN}}  是否邀请境外部级以上政要出席：{{detailForm.leaderF}}</td> 
+       <td colspan="6">是否邀请党和国家领导人出席：{{detailForm.leaderN}}      是否邀请境外部级以上政要出席：{{detailForm.leaderF}}</td> 
     </tr>
     <tr align="center">
        <td>参会活动内容简述</td>
