@@ -21,6 +21,7 @@
     "echarts": "^4.1.0",
     "element-ui": "^2.13.1",
     "font-awesome": "^4.7.0",
+    "iview": "^3.5.4",
     "js-cookie": "^2.2.0",
     "nprogress": "^0.2.0",
     "scriptjs": "^2.5.8",

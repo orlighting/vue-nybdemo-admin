@@ -1,7 +1,8 @@
 <template>
 <div class="detailCkeck">
-  <table border="1px" cellspacing="0">
-    <colgroup span="7" width="300"></colgroup>
+  <div class="card kjfs">
+  <table>
+    <colgroup span="7" width="200"></colgroup>
     <!-- <colgroup span="1" width="200"></colgroup> -->
     <tr align="center">
 				<th colspan="7">展会详细申报审核</th>
@@ -62,6 +63,7 @@
   <button class="pass" @click="check">审核通过</button>
   <button class="reject" @click="reject">返回修改</button>
 </div>
+  </div>
 </div>
 
 </template>
@@ -177,16 +179,17 @@ export default {
   color: #666;
 }
 table {
-  font-size: 16px;
-
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  font-family: 冬青黑体;
 }
 
 th {
-  font-size: 23px;
+  font-size: 20px;
 }
 
 tr {
-  height: 60px;
+  height: 45px;
 }
 
 .check {
@@ -232,7 +235,113 @@ tr {
 
 }
 
+  .card{
+    color: #666;
+    padding: 10px 20px;
+    @extend %shadow;
 
+    ul{
+      @include flex;
+      li{
+        flex: 1;
+        a{
+          color: #666666;
+          align-items:center;
+          padding-#{$top}: 20px;
+          padding-#{$bottom}: 20px;
+          @include flex(column);
+          span{
+            height: 44px;
+          }
+          .num{
+            line-height: 44px;
+            font-size: 42px;
+            color: $bluee;
+            margin: 0px;
+          }
+        }
+        .kjfs-bluee{
+          color: $bluee;
+        }
+        .kjfs-pinkk{
+          color: $pinkk;
+        }
+        .kjfs-yelloww{
+          color: $yelloww;
+        }
+        .kjfs-grennn{
+          color: $grennn;
+        }
+        .kjfs-purplee{
+          color: $purplee;
+        }
+        .kjfs-lightBluee{
+          color: $lightBluee;
+        }
+        &:hover{
+          .kjfs-bluee{
+            color: #ffffff;
+            background: $bluee;
+          }
+          .kjfs-pinkk{
+            color: #ffffff;
+            background: $pinkk;
+          }
+          .kjfs-yelloww{
+            color: #ffffff;
+            background: $yelloww;
+          }
+          .kjfs-grennn{
+            color: #ffffff;
+            background: $grennn;
+          }
+          .kjfs-purplee{
+            color: #ffffff;
+            background: $purplee;
+          }
+          .kjfs-lightBluee{
+            color: #ffffff;
+            background: $lightBluee;
+          }
+        }
+      }
+    }
+    .table{
+      padding: 21px;
+      p{
+        height: 52px;
+        line-height: 52px;
+        border: 1px solid #cccccc;
+        overflow: hidden;
+        border-#{$top}: none;
+        @include flex( null,start);
+        &:first-child{
+          border-#{$top}: 1px solid #cccccc;
+        }
+        span{
+        }
+        .tit{
+          width: 180px;
+          min-width: 180px;
+          height: 100%;
+          text-align: center;
+          border-#{$right}: 1px solid #cccccc;
+          margin-#{$right}: 18px;
+        }
+        span.gitbox{
+          flex: 1;
+          height: 100%;
+          overflow: hidden;
+          @include flex(row,start);
+          a{
+            &:first-child{
+              margin-#{$right}: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
 
 
 </style>
