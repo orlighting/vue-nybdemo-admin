@@ -50,9 +50,6 @@ export default {
       imgUrl:require("../../assets/photo.jpeg"),
 
       efcheck : false,
-      easyNum: '',
-      detailNum: ''
-
 
     }
   },
@@ -292,7 +289,8 @@ this.$axios
   }
   .notice{
     margin-right: 15px;
-    font-size: 38px;
+
+    font-size: 26px;
     line-height: 110px;
     height: 110px;
 

@@ -69,54 +69,54 @@ export default {
     submitForm () {
       let that = this
           // 将 id 设置为 token 存储在 store，仅为测试效果，实际存储 token 以后台返回为准
-    // that.$store.dispatch("setToken", that.loginForm.id).then(() => {
-    //   that.$router.push({path: "/"})
-    // }).catch(res => {
-    //   that.$message({
-    //     showClose: true,
-    //     message: res,
-    //     type: "error"
-    //   })
-    // })
-      if (this.loginForm.id === "" || this.loginForm.password === "") {
-        this.$message({
-          showClose: true,
-          message: "账号或密码不能为空",
-          type: "error"
-        })
-        return false
-      } else {
+    that.$store.dispatch("setToken", that.loginForm.id).then(() => {
+      that.$router.push({path: "/"})
+    }).catch(res => {
+      that.$message({
+        showClose: true,
+        message: res,
+        type: "error"
+      })
+    })
+      // if (this.loginForm.id === "" || this.loginForm.password === "") {
+      //   this.$message({
+      //     showClose: true,
+      //     message: "账号或密码不能为空",
+      //     type: "error"
+      //   })
+      //   return false
+      // } else {
 
-        this.$axios
-          .post('/login/admin', {
-            id: this.loginForm.id,
-            password: this.loginForm.password
-          })
-          .then(successResponse => {
-            if (successResponse.data.code === 0) {
-              // 将 id 设置为 token 存储在 store，仅为测试效果，实际存储 token 以后台返回为准
-              that.$store.dispatch("setToken", that.loginForm.id).then(() => {
-                that.$router.push({path: "/"})
-              }).catch(res => {
-                that.$message({
-                  showClose: true,
-                  message: res,
-                  type: "error"
-                })
-              })
-            }
-            else {
-              this.$message({
-                showClose: true,
-                message: "账号或密码错误！",
-                type: "error"
-              })
-            }
-          })
-          .catch(failResponse => {
-          })
+      //   this.$axios
+      //     .post('/login/admin', {
+      //       id: this.loginForm.id,
+      //       password: this.loginForm.password
+      //     })
+      //     .then(successResponse => {
+      //       if (successResponse.data.code === 0) {
+      //         // 将 id 设置为 token 存储在 store，仅为测试效果，实际存储 token 以后台返回为准
+      //         that.$store.dispatch("setToken", that.loginForm.id).then(() => {
+      //           that.$router.push({path: "/"})
+      //         }).catch(res => {
+      //           that.$message({
+      //             showClose: true,
+      //             message: res,
+      //             type: "error"
+      //           })
+      //         })
+      //       }
+      //       else {
+      //         this.$message({
+      //           showClose: true,
+      //           message: "账号或密码错误！",
+      //           type: "error"
+      //         })
+      //       }
+      //     })
+      //     .catch(failResponse => {
+      //     })
 
-      }
+      // }
     },
 
   },

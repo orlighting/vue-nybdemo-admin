@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Table :columns="columns1" :data="data"  :nextPath="nextPath" @on-row-click="check"></Table>
+    <Table :columns="columns1" :data="data1"  :nextPath="nextPath" @on-row-click="check"></Table>
     </div>
 </template>
 <script>

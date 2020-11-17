@@ -47,8 +47,9 @@ methods: {
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
     getEasyFormdata().then(res => {
+      console.log()
       this.easyForm = res.data
-    //   console.log(this.easyForm)
+      console.log(this.easyForm)
       this.easyForm.hostComp = this.easyForm.host
 
     // this.easyForm['hostComp'] = this.easyForm[]

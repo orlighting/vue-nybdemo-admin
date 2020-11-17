@@ -3,7 +3,7 @@ export function request(config){
 	// 1.创建axios的实例
 	const instance = axios.create({
 		// baseURL: "http://192.168.1.101:8445/api",
-		baseURL : 'http://192.168.1.102:8445/api',
+		baseURL = 'http://192.168.1.107:8445/api',
 		timeout: 5000
 	})
 	//2.axios拦截器

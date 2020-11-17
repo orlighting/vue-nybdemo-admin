@@ -156,8 +156,8 @@ export default {
       });
     },
     cancel() {
-      this.reject();
-      history.go(-1);
+      // this.reject();
+      // history.go(-1);
     },
     enrol() {
       this.$axios

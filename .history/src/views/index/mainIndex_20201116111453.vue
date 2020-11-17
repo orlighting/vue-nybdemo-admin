@@ -50,9 +50,6 @@ export default {
       imgUrl:require("../../assets/photo.jpeg"),
 
       efcheck : false,
-      easyNum: '',
-      detailNum: ''
-
 
     }
   },
@@ -64,7 +61,7 @@ this.$axios
       })
       .then(successResponse => {
         if (successResponse.data.code === 0) {
-          this.easyNum = successResponse.data.data
+          this.easyNum = successResponse.data
         }
         else {
           this.$message({

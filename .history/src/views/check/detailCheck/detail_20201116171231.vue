@@ -99,11 +99,10 @@
         <Modal
           v-model="modal1"
           title="需要返回修改意见吗"
-          :mask-closable="true"
           @on-ok="ok"
           @on-cancel="cancel"
         >
-          <p>需要返回修改意见，请点击确认；否则按取消返回详细申报审核列表界面</p>
+          <p>Content of dialog</p>
         </Modal>
       </div>
     </div>
@@ -147,7 +146,6 @@ export default {
   },
   methods: {
     ok() {
-      this.reject();
       this.$router.push({
         path: "/send",
         query: {
@@ -157,7 +155,6 @@ export default {
     },
     cancel() {
       this.reject();
-      history.go(-1);
     },
     enrol() {
       this.$axios
@@ -230,23 +227,23 @@ export default {
       });
     },
     reject() {
-      // this.$axios
-      //   .post("/check/detail", {
-      //     id: this.detailForm.id,
-      //     adminId: this.$store.getters.token,
-      //     checkState: 3,
-      //   })
-      //   .then((successResponse) => {
-      //     if (successResponse.data.code === 0) {
-      //     } else {
-      //       this.$message({
-      //         showClose: true,
-      //         message: "提交失败！",
-      //         type: "error",
-      //       });
-      //     }
-      //   })
-      //   .catch((failResponse) => {});
+      this.$axios
+        .post("/check/detail", {
+          id: this.detailForm.id,
+          adminId: this.$store.getters.token,
+          checkState: 3,
+        })
+        .then((successResponse) => {
+          if (successResponse.data.code === 0) {
+          } else {
+            this.$message({
+              showClose: true,
+              message: "提交失败！",
+              type: "error",
+            });
+          }
+        })
+        .catch((failResponse) => {});
     },
   },
 };

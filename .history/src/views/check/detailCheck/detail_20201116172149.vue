@@ -99,11 +99,10 @@
         <Modal
           v-model="modal1"
           title="需要返回修改意见吗"
-          :mask-closable="true"
           @on-ok="ok"
           @on-cancel="cancel"
         >
-          <p>需要返回修改意见，请点击确认；否则按取消返回详细申报审核列表界面</p>
+          <p>返回修改意见，请点击确认；否则按取消返回详细申报审核列表界面</p>
         </Modal>
       </div>
     </div>

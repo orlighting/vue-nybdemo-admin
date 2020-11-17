@@ -99,7 +99,7 @@
         <Modal
           v-model="modal1"
           title="需要返回修改意见吗"
-          :mask-closable="true"
+          :closable="true"
           @on-ok="ok"
           @on-cancel="cancel"
         >

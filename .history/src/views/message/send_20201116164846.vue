@@ -66,15 +66,15 @@ export default {
     return {
       sendMsg: {
         name: "",
-        receiveid: null,
+        receiveid: '',
         msgtitle: "",
         msgtext: "",
       },
     };
   },
   created(){
-      this.sendMsg.receiveid = this.$route.query.userId;
-    //   console.log(this.sendMsg.receiveid)
+      this.receiveid = this.$route.query.userId;
+      console.log(this.receiveid)
 
   },
   methods: {

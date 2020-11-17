@@ -50,9 +50,6 @@ export default {
       imgUrl:require("../../assets/photo.jpeg"),
 
       efcheck : false,
-      easyNum: '',
-      detailNum: ''
-
 
     }
   },

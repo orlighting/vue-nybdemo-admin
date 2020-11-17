@@ -50,9 +50,6 @@ export default {
       imgUrl:require("../../assets/photo.jpeg"),
 
       efcheck : false,
-      easyNum: '',
-      detailNum: ''
-
 
     }
   },
@@ -289,12 +286,5 @@ this.$axios
     margin-#{$top}: 30px;
     padding-#{$top}: 10px;
     @extend %shadow;
-  }
-  .notice{
-    margin-right: 15px;
-    font-size: 38px;
-    line-height: 110px;
-    height: 110px;
-
   }
 </style>

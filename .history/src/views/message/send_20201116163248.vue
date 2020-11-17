@@ -72,11 +72,6 @@ export default {
       },
     };
   },
-  created(){
-      this.sendMsg.receiveid = this.$route.query.userId;
-    //   console.log(this.sendMsg.receiveid)
-
-  },
   methods: {
     sendMsged() {
       if (this.sendMsg.receiveid.length != 9) {

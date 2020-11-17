@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Table :columns="columns1" :data="data"  :nextPath="nextPath" @on-row-click="check"></Table>
+    <Table :columns="columns1" :data="data1"  :nextPath="nextPath" @on-row-click="check"></Table>
     </div>
 </template>
 <script>
@@ -44,8 +44,7 @@
                 ],
                 data1: [
                     {id:'1111',
-                    name:'weqe',
-                    checkState: '审核中'
+                    name:'weqe'
                     }
                 ]
             }

@@ -47,14 +47,15 @@ methods: {
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {
     getEasyFormdata().then(res => {
+      console.log()
       this.easyForm = res.data
-    //   console.log(this.easyForm)
+      console.log(this.easyForm)
       this.easyForm.hostComp = this.easyForm.host
-
+        console.log(this.easyForm)
     // this.easyForm['hostComp'] = this.easyForm[]
     for(let item of this.easyForm){
         item.checkState = item.checkState == 0 ? '待审核': '已通过'
-        item.hostComp = item.host
+        this.item.hostComp = this.item.host
       }
     })
     console.log('this.easyForm')

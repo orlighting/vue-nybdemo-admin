@@ -74,7 +74,7 @@ export default {
   },
   created(){
       this.sendMsg.receiveid = this.$route.query.userId;
-    //   console.log(this.sendMsg.receiveid)
+      console.log(this.receiveid)
 
   },
   methods: {
