@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
 <el-row :gutter='20'>
 
       <el-col :span='12'>
@@ -50,6 +50,9 @@ export default {
       imgUrl:require("../../assets/photo.jpeg"),
 
       efcheck : false,
+      easyNum: '',
+      detailNum: ''
+
 
     }
   },
@@ -92,6 +95,7 @@ this.$axios
       })
       .catch(failResponse => {
       })
+      console.log(router.app.$options.store)
 
 
   },
@@ -289,10 +293,17 @@ this.$axios
   }
   .notice{
     margin-right: 15px;
-
-    font-size: 26px;
+    padding: auto;
+    font-size: 22px;
     line-height: 110px;
     height: 110px;
+    width:400px;
 
+  }
+  .el-row{
+    display: flex;
+  }
+  .main{
+    display: flex;
   }
 </style>

@@ -95,6 +95,7 @@ this.$axios
       })
       .catch(failResponse => {
       })
+      console.log(router.app.$options.store.checkState)
 
 
   },

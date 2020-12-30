@@ -58,6 +58,7 @@ export default {
   },
 
   created() {
+    console.log(this.$store);
 this.$axios
       .post('/message/easyNum', {
 
@@ -95,6 +96,7 @@ this.$axios
       })
       .catch(failResponse => {
       })
+      
 
 
   },
