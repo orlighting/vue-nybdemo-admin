@@ -76,11 +76,11 @@
         <tr align="center">
           <td>领导出席情况</td>
           <td colspan="6">
-            是否邀请党和国家领导人出席：<span>{{ getLeaderN }} </span><br />
+            是否邀请党和国家领导人出席：<span>{{ detailForm.leaderState }} </span><br />
             是否有国外政府官员含驻华使馆：<span>{{ getLeaderF }}</span>
-            国家级行业协会负责人<span>{{ getLeaderA }}</span>
-            省部级以上领导<span>{{ getLeaderP }}</span>
-            有关司局和事业单位负责人<span>{{ getLeaderD }}</span>
+            国家级行业协会负责人<span>{{ getLeaderF }}</span>
+            省部级以上领导<span>{{ getLeaderF }}</span>
+            有关司局和事业单位负责人<span>{{ getLeaderF }}</span>
           </td>
         </tr>
         <tr align="center">
@@ -162,12 +162,9 @@ export default {
     },
 
     getLeaderA() {
-      return parseInt((this.detailForm.leaderState%1000)/10) == 1 ? "是" : "否";
+      returnparseInt((this.detailForm.leaderState%1000)/10) == 1 ? "是" : "否";
     },
     getLeaderP() {
-      return parseInt((this.detailForm.leaderState%100)/10) == 1 ? "是" : "否";
-    },
-    getLeaderD() {
       return parseInt((this.detailForm.leaderState%100)/10) == 1 ? "是" : "否";
     },
   },
@@ -267,7 +264,7 @@ export default {
             });
           }
     });
-    // history.go(-1);
+    history.go(-1);
     },
   },
 };

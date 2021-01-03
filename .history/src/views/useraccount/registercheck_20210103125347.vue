@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import {addUser} from '../../network/addUser';
   export default {
     data() {
       return {
@@ -29,13 +28,6 @@ import {addUser} from '../../network/addUser';
     methods: {
       onSubmit() {
         console.log('submit!');
-        addUser(this.formInline.name, this.formInline.abbreviation).then(successResponse => {
-                console.log(successResponse)
-            if (successResponse.code === 0) {
-                alert("添加成功")
-                this.$router.push({ path: "/" });
-                }
-            })
       }
     }
   }

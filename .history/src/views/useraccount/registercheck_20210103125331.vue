@@ -5,7 +5,7 @@
     <el-input v-model="formInline.name" placeholder="展会名称"></el-input>
   </el-form-item>
   <el-form-item label="展会简称:">
-    <el-input v-model="formInline.abbreviation" placeholder="展会首字母小写"></el-input>
+    <el-input v-model="formInline.abbreviation" placeholder="展会简称"></el-input>
   </el-form-item>
 
   <el-form-item>
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import {addUser} from '../../network/addUser';
   export default {
     data() {
       return {
@@ -29,13 +28,6 @@ import {addUser} from '../../network/addUser';
     methods: {
       onSubmit() {
         console.log('submit!');
-        addUser(this.formInline.name, this.formInline.abbreviation).then(successResponse => {
-                console.log(successResponse)
-            if (successResponse.code === 0) {
-                alert("添加成功")
-                this.$router.push({ path: "/" });
-                }
-            })
       }
     }
   }

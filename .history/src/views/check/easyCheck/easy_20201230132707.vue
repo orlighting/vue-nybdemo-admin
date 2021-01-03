@@ -162,12 +162,9 @@ export default {
     },
 
     getLeaderA() {
-      return parseInt((this.detailForm.leaderState%1000)/10) == 1 ? "是" : "否";
+      returnparseInt((this.detailForm.leaderState%1000)/10) == 1 ? "是" : "否";
     },
     getLeaderP() {
-      return parseInt((this.detailForm.leaderState%100)/10) == 1 ? "是" : "否";
-    },
-    getLeaderD() {
       return parseInt((this.detailForm.leaderState%100)/10) == 1 ? "是" : "否";
     },
   },

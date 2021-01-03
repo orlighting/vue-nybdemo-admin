@@ -36,7 +36,7 @@ const cn = {
     message:"信息系统",
     send:"消息推送",
     account:"账号管理",
-    register:"注册审核",
+    register:"添加账户",
     "menu2-1": "二级-1",
     "menu2-2": "二级-2",
     "menu2-3": "二级-3",

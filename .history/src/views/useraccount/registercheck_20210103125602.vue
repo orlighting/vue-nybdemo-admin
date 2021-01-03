@@ -32,7 +32,7 @@ import {addUser} from '../../network/addUser';
         addUser(this.formInline.name, this.formInline.abbreviation).then(successResponse => {
                 console.log(successResponse)
             if (successResponse.code === 0) {
-                alert("添加成功")
+                alert("添加成果")
                 this.$router.push({ path: "/" });
                 }
             })

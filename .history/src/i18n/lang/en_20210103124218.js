@@ -32,11 +32,12 @@ const en = {
 
     check:"check",
     detail:"detail",
+    exhiShow:'exhiShow',
     easy:"easy",
     message:"message",
     send:"send",
     account:"account",
-    register:"register",
+    register:"addAccount",
 
     "menu2-1": "menu2-1",
     "menu2-2": "menu2-2",
