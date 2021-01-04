@@ -6,8 +6,8 @@
         <div class="card bbxx">
           <p class="title"><i class="fa fa-th-large fa-lg"></i>待审核的申报</p >
           <div style="padding-bottom: 35px; text-align: center">
-            <p class="notice">需要审核的简易申报共有<span style="color: #bd2c00">&nbsp;{{easyNum}}&nbsp;</span>件</p >
-            <p class="notice">需要审核的详细申报共有<span style="color: #bd2c00">&nbsp;{{detailNum}}&nbsp;</span>件</p >
+            <p class="notice">需要审核的再次申报共有<span style="color: #bd2c00">&nbsp;{{easyNum}}&nbsp;</span>件</p >
+            <p class="notice">需要审核的首次申报共有<span style="color: #bd2c00">&nbsp;{{detailNum}}&nbsp;</span>件</p >
           </div>
         </div>
       </el-col>
@@ -18,8 +18,8 @@
             <p class="title"><i class="fa fa-th-large fa-lg"></i>快捷方式</p >
 
             <ul>
-              <li><router-link to="/detail" class="kjfs kjfs-grennn"><span><i class="fa fa-wpforms fa-2x"></i></span><span>详细申报审核</span></router-link></li>
-              <li><router-link to="/easy" class="kjfs kjfs-pinkk"><span><i class="fa fa-leanpub fa-2x"></i></span><span>简易申报审核</span></router-link></li>
+              <li><router-link to="/detail" class="kjfs kjfs-grennn"><span><i class="fa fa-wpforms fa-2x"></i></span><span>首次申报审核</span></router-link></li>
+              <li><router-link to="/easy" class="kjfs kjfs-pinkk"><span><i class="fa fa-leanpub fa-2x"></i></span><span>再次申报审核</span></router-link></li>
             </ul>
             <ul>
               <li><router-link to="/register" class="kjfs kjfs-purplee"><span><i class="fa fa-address-card-o fa-2x"></i></span><span>注册审核</span></router-link></li>
@@ -96,7 +96,7 @@ this.$axios
       })
       .catch(failResponse => {
       })
-      
+
 
 
   },
