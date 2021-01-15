@@ -19,7 +19,7 @@
         </tr>
          <tr align="center">
           <td>协办单位</td>
-          <td>{{ detailForm.assistingComp }}</td>
+          <td>{{ detailForm.supportComp }}</td>
           <td>指导单位</td>
           <td>{{ detailForm.orderComp }}</td>
         </tr>       
@@ -30,9 +30,9 @@
           <td>{{ detailForm.authNum }}</td>
         </tr>
         <tr align="center">
-          <td>批准审核文件</td>
+          <td>去年审批文件</td>
           <td colspan="6" style="font-size: 10px">
-            <div class="down" @click="downPreExpoFile">
+            <div class="down" @click="downAuthFile">
               <img src="../../../assets/file.svg" />点击下载
             </div>
           </td>
@@ -45,16 +45,12 @@
         </tr>
         <tr align="center">
           <td>举办时间</td>
-          <td>{{ detailForm.startTime }}—{{ detailForm.endTime }}</td>
-          <td>举办周期</td>
-          <td>{{ detailForm.cycle }}</td>
+          <td colspan="6">{{ detailForm.startTime }}—{{ detailForm.endTime }}</td>
+
         </tr>
         <tr align="center">
-          <td>参展商来源</td>
-          <td>
-            国内：<span>{{ detailForm.domestic }}%</span><br />
-            海外：<span>{{ detailForm.foreign }}%</span>
-          </td>
+          <td>是否邀请境外有关机构及参展商</td>
+          <td>{{ getForign }}</td>
           <td>观众构成</td>
           <td>
             是否有参展商：<span>{{ getView1 }}</span> <br />是否有消费者：<span
@@ -64,46 +60,61 @@
         </tr>
         <tr align="center">
           <td>展会内容</td>
-          <td colspan="6">{{ detailForm.content }}</td>
+          <td colspan="6">{{ detailForm.meetState }}</td>
         </tr>
+        <tr align="center">
+          <td>同期活动</td>
+          <td colspan="6">{{ detailForm.activityBrief }}</td>
+        </tr>       
         <tr align="center">
           <td>经费来源</td>
           <td colspan="3">
-            财政资金：<span>{{ detailForm.finanFund }}元<br /></span> 其他资金:
-            <span>{{ detailForm.otherFund }}元</span>
+            财政资金：<span>{{ detailForm.finanFund }}元<br /></span> 自筹资金:
+            <span>{{ detailForm.selfFund }}元</span>
           </td>
         </tr>
         <tr align="center">
           <td>领导出席情况</td>
           <td colspan="6">
-            是否邀请党和国家领导人出席：<span>{{ getLeaderD }} </span><br />
-            是否邀请境外部级以上政要出席：<span>{{ getLeaderF }}</span>
+            是否邀请党和国家领导人出席：<span>{{ getLeaderN }} </span><br />
+            是否有国外政府官员含驻华使馆：<span>{{ getLeaderF }}</span>
+            国家级行业协会负责人<span>{{ getLeaderA }}</span>
+            省部级以上领导<span>{{ getLeaderP }}</span>
+            有关司局和事业单位负责人<span>{{ getLeaderD }}</span>
           </td>
         </tr>
+         <tr align="center">
+          <td>填报单位</td>
+          <td>{{ detailForm.writeObject }}</td>
+          <td>负责处室</td>
+          <td>{{ detailForm.department }}</td>
+        </tr>     
+         <tr align="center">
+          <td>处室负责人</td>
+          <td>{{ detailForm.charger }}</td>
+          <td>手机号</td>
+          <td>{{ detailForm.teleNum }}</td>
+        </tr> 
         <tr align="center">
-          <td>参会活动内容简述</td>
-          <td colspan="6">{{ detailForm.declare }}</td>
-        </tr>
-        <tr align="center">
-          <td>以往会展情况</td>
+          <td>展会工作方案文档</td>
           <td colspan="6" style="font-size: 10px">
-            <div class="down" @click="downPreExpoFile">
+            <div class="down" @click="downMeetPlanFile">
               <img src="../../../assets/file.svg" />点击下载
             </div>
           </td>
         </tr>
         <tr align="center">
-          <td>招商方案</td>
+          <td>招展招商方案文档</td>
           <td colspan="6" style="font-size: 10px">
             <div class="down" @click="downInvestmentPlanFile">
               <img src="../../../assets/file.svg" />点击下载
             </div>
           </td>
-        </tr>
+        </tr>                     
       </table>
       <br />
       <div class="check">
-        <button class="pass" @click="checkPass" v-show="ishow">审核通过</button>
+        <button class="pass" @click="Pass" v-show="ishow">审核通过</button>
         <button class="pass" @click="enrol" v-show="!ishow">
           列入展会计划
         </button>
@@ -127,7 +138,7 @@
 <script>
 import { userInfo } from "os";
 import { successOpen } from "../../../../../../前端学习/vue-nybdemo-user/src/utils/message";
-import { getdetailFile } from "../../../network/detailCheck";
+import { getEasyFile, checkPass} from "../../../network/easyCheck";
 export default {
   name: "detail",
   data() {
@@ -145,6 +156,9 @@ export default {
     ishow() {
       return this.detailForm.checkState == "待审核" ? true : false;
     },
+    getForign() {
+      return this.detailForm.view1 == true ? "是" : "否";
+    },    
     getView1() {
       return this.detailForm.view1 == true ? "是" : "否";
     },
@@ -152,11 +166,21 @@ export default {
       return this.detailForm.view2 == true ? "是" : "否";
     },
 
-    getLeaderD() {
-      return this.detailForm.leaderD == true ? "是" : "否";
+    getLeaderN() {
+      return parseInt(this.detailForm.leaderState/10000)  == 1 ? "是" : "否";
     },
     getLeaderF() {
-      return this.detailForm.leaderF == true ? "是" : "否";
+      return parseInt((this.detailForm.leaderState%10000)/10)  == 1 ? "是" : "否";
+    },
+
+    getLeaderA() {
+      return parseInt((this.detailForm.leaderState%1000)/10) == 1 ? "是" : "否";
+    },
+    getLeaderP() {
+      return parseInt((this.detailForm.leaderState%100)/10) == 1 ? "是" : "否";
+    },
+    getLeaderD() {
+      return parseInt((this.detailForm.leaderState%100)/10) == 1 ? "是" : "否";
     },
   },
   methods: {
@@ -165,7 +189,7 @@ export default {
       this.$router.push({
         path: "/send",
         query: {
-          userId: this.detailForm.userId,
+          meetAddr: this.detailForm.meetAddr,
         },
       });
     },
@@ -174,13 +198,7 @@ export default {
       history.go(-1);
     },
     enrol() {
-      this.$axios
-        .post("/check/detail", {
-          id: this.detailForm.id,
-          adminId: this.$store.getters.token,
-          checkState: 2,
-        })
-        .then((successResponse) => {
+    checkPass(this.detailForm.id,this.$store.getters.token,2).then(successResponse => {
           if (successResponse.data.code === 0) {
           } else {
             this.$message({
@@ -189,18 +207,11 @@ export default {
               type: "error",
             });
           }
-        })
-        .catch((failResponse) => {});
-      history.go(-1);
+    });
+    history.go(-1);
     },
-    checkPass() {
-      this.$axios
-        .post("/check/detail", {
-          id: this.detailForm.id,
-          adminId: this.$store.getters.token,
-          checkState: 1,
-        })
-        .then((successResponse) => {
+    Pass() {
+    checkPass(this.detailForm.id,this.$store.getters.token,1).then(successResponse => {
           if (successResponse.data.code === 0) {
           } else {
             this.$message({
@@ -209,14 +220,13 @@ export default {
               type: "error",
             });
           }
-        })
-        .catch((failResponse) => {});
-      history.go(-1);
+    });
+    history.go(-1);
     },
-    downPreExpoFile() {
-      getdetailFile(this.detailForm.preExpoFileId).then((res) => {
+    downMeetPlanFile() {
+      getEasyFile(this.detailForm.meetPlanFileId).then((res) => {
         const blob = new Blob([res]); //处理文档流
-        const fileName = this.detailForm.name + "的以往会展情况.pdf";
+        const fileName = this.detailForm.name + "展会工作方案文档.pdf";
         const elink = document.createElement("a");
         elink.setAttribute("download", decodeURIComponent(fileName));
         elink.download = fileName;
@@ -229,9 +239,24 @@ export default {
       });
     },
     downInvestmentPlanFile() {
-      getdetailFile(this.detailForm.investmentPlanFileId).then((res) => {
+      getEasyFile(this.detailForm.authFileId).then((res) => {
         const blob = new Blob([res]); //处理文档流
-        const fileName = this.detailForm.name + "的招商方案.pdf";
+        const fileName = this.detailForm.name + "上级单位审核意见.pdf";
+        const elink = document.createElement("a");
+        elink.setAttribute("download", decodeURIComponent(fileName));
+        elink.download = fileName;
+        elink.style.display = "none";
+        elink.href = URL.createObjectURL(blob);
+        document.body.appendChild(elink);
+        elink.click();
+        URL.revokeObjectURL(elink.href); // 释放URL 对象
+        document.body.removeChild(elink);
+      });
+    },
+    downAuthFile(){
+      getEasyFile(this.detailForm.investmentPlanFileId).then((res) => {
+        const blob = new Blob([res]); //处理文档流
+        const fileName = this.detailForm.name + "招展招商方案文档.pdf";
         const elink = document.createElement("a");
         elink.setAttribute("download", decodeURIComponent(fileName));
         elink.download = fileName;
@@ -244,23 +269,17 @@ export default {
       });
     },
     reject() {
-      // this.$axios
-      //   .post("/check/detail", {
-      //     id: this.detailForm.id,
-      //     adminId: this.$store.getters.token,
-      //     checkState: 3,
-      //   })
-      //   .then((successResponse) => {
-      //     if (successResponse.data.code === 0) {
-      //     } else {
-      //       this.$message({
-      //         showClose: true,
-      //         message: "提交失败！",
-      //         type: "error",
-      //       });
-      //     }
-      //   })
-      //   .catch((failResponse) => {});
+    checkPass(this.detailForm.id,this.$store.getters.token,3).then(successResponse => {
+          if (successResponse.data.code === 0) {
+          } else {
+            this.$message({
+              showClose: true,
+              message: "提交失败！",
+              type: "error",
+            });
+          }
+    });
+    // history.go(-1);
     },
   },
 };

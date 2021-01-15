@@ -83,6 +83,18 @@
             有关司局和事业单位负责人<span>{{ getLeaderD }}</span>
           </td>
         </tr>
+         <tr align="center">
+          <td>填报单位</td>
+          <td>{{ detailForm.writeObject }}</td>
+          <td>负责处室</td>
+          <td>{{ detailForm.department }}</td>
+        </tr>     
+         <tr align="center">
+          <td>处室负责人</td>
+          <td>{{ detailForm.charger }}</td>
+          <td>手机号</td>
+          <td>{{ detailForm.teleNum }}</td>
+        </tr> 
         <tr align="center">
           <td>展会工作方案文档</td>
           <td colspan="6" style="font-size: 10px">
