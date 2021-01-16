@@ -30,9 +30,9 @@ const cn = {
     multiDirectory: "多级目录",
 
     check:"申报审核",
-    detail:"详细申报审核",
+    detail:"首次申报审核",
     exhiShow:'会展信息展示',
-    easy:"简易申报审核",
+    easy:"再次申报审核",
     message:"信息系统",
     send:"消息推送",
     account:"账号管理",

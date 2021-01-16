@@ -39,7 +39,7 @@
               <img src="../../../assets/file.svg" />点击下载
             </div>
           </td>
-        </tr>        
+        </tr>
         <tr align="center">
           <td>举办地点</td>
           <td>{{ detailForm.place }}</td>
@@ -69,7 +69,7 @@
         <tr align="center">
           <td>同期活动</td>
           <td colspan="6">{{ detailForm.activityBrief }}</td>
-        </tr>       
+        </tr>
         <tr align="center">
           <td>经费来源</td>
           <td colspan="3">
@@ -138,7 +138,7 @@
               <img src="../../../assets/file.svg" />点击下载
             </div>
           </td>
-        </tr>                       
+        </tr>
       </table>
       <br />
       <div class="check">
@@ -164,8 +164,6 @@
 </template>
 
 <script>
-import { userInfo } from "os";
-import { successOpen } from "../../../../../../前端学习/vue-nybdemo-user/src/utils/message";
 import { getdetailFile, checkPass } from "../../../network/detailCheck";
 export default {
   name: "detail",
@@ -186,7 +184,7 @@ export default {
     },
     getForign() {
       return this.detailForm.view1 == true ? "是" : "否";
-    },    
+    },
     getView1() {
       return this.detailForm.view1 == true ? "是" : "否";
     },
@@ -233,7 +231,7 @@ export default {
               showClose: true,
               message: "提交失败！",
               type: "error",
-            
+
             });
           }
     });
