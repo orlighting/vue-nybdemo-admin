@@ -29,8 +29,7 @@
           <td>批准单位</td>
           <td>{{ detailForm.authObj }}</td>
           <td>批准文号</td>
-          <td v-if="detailForm.authNum">{{ detailForm.authNum }}</td>
-          <td v-if="!detailForm.authNum">无</td>
+          <td>{{ detailForm.authNum }}</td>
         </tr>
         <tr align="center">
           <td>去年审批文件</td>

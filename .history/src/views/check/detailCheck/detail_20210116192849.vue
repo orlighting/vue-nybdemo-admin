@@ -19,9 +19,11 @@
         </tr>
          <tr align="center">
           <td>协办单位</td>
-          <td>{{ detailForm.supportComp }}</td>
+          <td v-if="detailForm.supportComp">{{ detailForm.supportComp }}</td>
+          <td v-if="!detailForm.supportComp">无</td>
           <td>指导单位</td>
-          <td>{{ detailForm.orderComp }}</td>
+          <td v-if="detailForm.orderComp">{{ detailForm.orderComp }}</td>
+          <td v-if="!detailForm.orderComp">无</td>
         </tr>       
         <tr align="center">
           <td>批准单位</td>
@@ -77,13 +79,25 @@
         <tr align="center">
           <td>领导出席情况</td>
           <td colspan="6">
-            是否邀请党和国家领导人出席：<span>{{ detailForm.leaderState }} </span><br />
+            是否邀请党和国家领导人出席：<span>{{ getLeaderN }} </span><br />
             是否有国外政府官员含驻华使馆：<span>{{ getLeaderF }}</span>
-            国家级行业协会负责人<span>{{ getLeaderF }}</span>
-            省部级以上领导<span>{{ getLeaderF }}</span>
-            有关司局和事业单位负责人<span>{{ getLeaderF }}</span>
+            国家级行业协会负责人<span>{{ getLeaderA }}</span>
+            省部级以上领导<span>{{ getLeaderP }}</span>
+            有关司局和事业单位负责人<span>{{ getLeaderD }}</span>
           </td>
         </tr>
+         <tr align="center">
+          <td>填报单位</td>
+          <td>{{ detailForm.writeObject }}</td>
+          <td>负责处室</td>
+          <td>{{ detailForm.department }}</td>
+        </tr>     
+         <tr align="center">
+          <td>处室负责人</td>
+          <td>{{ detailForm.charger }}</td>
+          <td>手机号</td>
+          <td>{{ detailForm.teleNum }}</td>
+        </tr>     
         <tr align="center">
           <td>展会工作方案文档</td>
           <td colspan="6" style="font-size: 10px">
@@ -127,10 +141,10 @@
       </table>
       <br />
       <div class="check">
-        <button class="pass" @click="Pass" v-show="ishow">审核通过</button>
-        <button class="pass" @click="enrol" v-show="!ishow">
+        <button class="pass" @click="Pass">审核通过</button>
+        <!-- <button class="pass" @click="enrol" v-show="!ishow">
           列入展会计划
-        </button>
+        </button> -->
         <Button class="reject" type="primary" @click="modal1 = true"
           >返回修改</Button
         >
@@ -178,12 +192,21 @@ export default {
     getView2() {
       return this.detailForm.view2 == true ? "是" : "否";
     },
-
-    getLeaderD() {
-      return this.detailForm.leaderD == true ? "是" : "否";
+    getLeaderN() {
+      return parseInt(this.detailForm.leaderState/10000)  == 1 ? "是" : "否";
     },
     getLeaderF() {
-      return this.detailForm.leaderF == true ? "是" : "否";
+      return parseInt((this.detailForm.leaderState%10000)/10)  == 1 ? "是" : "否";
+    },
+
+    getLeaderA() {
+      return parseInt((this.detailForm.leaderState%1000)/10) == 1 ? "是" : "否";
+    },
+    getLeaderP() {
+      return parseInt((this.detailForm.leaderState%100)/10) == 1 ? "是" : "否";
+    },
+    getLeaderD() {
+      return parseInt(this.detailForm.leaderState%10) == 1 ? "是" : "否";
     },
   },
   methods: {
@@ -216,7 +239,7 @@ export default {
     history.go(-1);
     },
     Pass(){
-    checkPass(this.detailForm.id,this.$store.getters.token,1).then(successResponse => {
+    checkPass(this.detailForm.id,this.$store.getters.token,2).then(successResponse => {
           if (successResponse.data.code === 0) {
           } else {
             this.$message({

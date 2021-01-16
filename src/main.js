@@ -34,7 +34,7 @@ Vue.use(VideoPlayer)
 
 var axios = require('axios')
 // axios.defaults.baseURL = 'http://192.168.1.101:8445/api'
-axios.defaults.baseURL = 'http://10.28.251.188:8445/api'
+axios.defaults.baseURL = 'http://8.131.56.110:8445/api'
 Vue.prototype.$axios = axios
 
 NProgress.inc(0.2)
